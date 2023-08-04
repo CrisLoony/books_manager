@@ -1,10 +1,6 @@
 import psycopg2
 
-dbname = "postgres"
-user = "postgres"
-password = "987456321"
-host = "localhost" 
-port = "5432" 
+...
 
 conn = psycopg2.connect(
     dbname=dbname,
@@ -15,7 +11,6 @@ conn = psycopg2.connect(
 )
 cursor = conn.cursor()
 
-# Creating table 'books'
 cursor.execute('''CREATE TABLE IF NOT EXISTS books (
                     id SERIAL PRIMARY KEY,
                     title TEXT,
@@ -24,9 +19,6 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS books (
                     company TEXT,
                     release INTEGER
                  )''')
-
-# Defining functions
-
 
 def verify_answer(options: list, answer: str):
     if answer not in options:
@@ -41,7 +33,6 @@ def continue_navigating(answer):
     if answer in yes:
         return True
     return False
-
 
 def register_book(title, author, pages, company, release):
     title = title.replace("'", "\'")
